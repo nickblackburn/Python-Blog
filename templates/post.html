@@ -1,0 +1,80 @@
+<div class="container">
+  <div class="post">
+    <div class="row">
+      <div class="col-xs-12 col-md-4" id="post-title">
+          <a href="/{{p.key().id()}}" class="post-link">
+            {{p.subject}}
+          </a>
+      </div>
+
+      <div class="col-xs-12 col-md-4">
+        <div class="edit-button">
+          {% if uid %}
+            <a href="/editpost/{{p.key().id()}}" class="buttons">edit</a> |  
+            <a href="/deletepost/{{p.key().id()}}" class="buttons">delete</a> |
+            <a href="/likepost/{{p.key().id()}}" class="buttons">like</a> | 
+            <a href="/unlikepost/{{p.key().id()}}" class="buttons">unlike</a> | 
+            <a href="/{{p.key().id()}}/addcomment/{{uid}}" class="buttons">comment</a>
+          {% endif %}
+          <!-- <a href="/comment/{{p.key().id()}}" class="buttons">comment</a> -->
+          <!-- <a href="/{{p.key().id()}}/comment/create" class="buttons">comment</a> -->
+        </div>
+      </div>
+
+      <div class="col-xs-12 col-md-1">
+        <div class="post-likes">
+          {% if p.likes == 0 %}
+            {{p.likes}} Likes
+          {% elif p.likes == 1 %}
+            {{p.likes}} Like
+          {% elif p.likes >= 2 %}
+            {{p.likes}} Likes
+          {% endif %}
+        </div>
+      </div>
+
+      <div class="col-xs-12 col-md-1">
+        <div class="username">
+          {{p.user_name}}
+        </div>
+      </div>
+
+      <div class="col-xs-12 col-md-2">
+        <div class="post-date">
+          {{p.created.strftime("%b %d, %Y")}}
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="post-content">
+          {{p._new_text | safe}}
+        </div>
+      </div>
+    </div>
+
+    <br>
+
+    {% for c in comments %}
+    <div class="comment">
+      <div class="row">
+        <div class="col-xs-12 col-md-2">
+            <div class="comment-username">{{c.user_name}}</div>
+            {% if uid and uid == c.username_id %}
+              <a href="/{{p.key().id()}}/{{c.username_id}}/editcomment/{{c.key().id()}}" class="buttons">edit</a> | 
+              <a href="/{{p.key().id()}}/{{c.username_id}}/deletecomment/{{c.key().id()}}" class="buttons">delete</a>
+            {% endif %}
+            <div class="comment-date">{{c.created.strftime("%b %d, %Y")}}</div>
+        </div>
+          <div class="col-xs-12 col-md-10">
+            <p class="comment-content">
+              {{ c.content }}
+            </p>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+
+  </div>
+</div>

@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+  
+    <div class="row">
+        <div class="col-xs-12">
+            <form method="post">
+                <label>
+                  <div>Comment:</div>
+                  <textarea name="content">{{content}}</textarea>
+                </label>
+
+                <input type="submit">
+            </form>
+            <br>
+            <a href="/" class="cancel-button">Cancel</a>
+        </div>
+    </div>
+
+  
+{% endblock %}

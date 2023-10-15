@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="perma-page">
+				{% if user %}
+			  		{{post.replace_newline(user.key().id(), comments) | safe}}
+			  	{% else %}
+			  		{{post.replace_newline(None, comments) | safe}}
+				{% endif %}
+			</div>
+		</div>
+	</div>
+{% endblock %}

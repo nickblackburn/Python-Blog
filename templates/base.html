@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link type="text/css" rel="stylesheet" href="/static/main.css" />
+
+  <title>My Blog</title>
+</head>
+
+<body>
+  <div class="container">
+    <div class="row" id="head-group">
+      <div class="col-xs-9">
+        <a href="/" class="main-title">
+          My Blog
+        </a>
+      </div>
+
+      <div class="col-xs-3">
+        <div class="login-area">
+          {% if user %}
+            Hello, {{user.name}} (<a class="login-link" href="/logout">logout</a>)
+          {% else %}
+            <a class="login-link" href="/login">login</a>
+            |
+            <a class="login-link" href="/signup">signup</a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12">
+        <div id="content">
+        {% block content %}
+        {% endblock %}
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
+

@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row">
+  <div class="col-xs-12">
+    <h2>New Post:</h2>
+    <h4 class="post-by">By: {{username}}</h4>
+
+      <form method="post">
+        <label>
+          <br>
+          <div>Subject</div>
+          <input type="text" name="subject" value="{{subject}}">
+        </label>
+
+        <label>
+          <div>Blog</div>
+          <textarea name="content">{{content}}</textarea>
+        </label>
+
+        <div class="error">{{error}}</div>
+
+        <input type="submit">
+      </form>
+      <br>
+      <a href="/" class="cancel-button">Cancel</a>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+	<div class="row">
+		<div class="col-xs-12">
+			<div>
+				<a href="/newpost" class="newpost-button">
+		    		New Post
+		 		 </a>
+		  	</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-xs-12">
+		  {% for post in posts %}
+		    {% if user %}
+		  		{{post.replace_newline(user.key().id(), comments) | safe}}
+		  		<br>
+		  	{% else %}
+		  		{{post.replace_newline(None, comments) | safe}}
+		  		<br>
+			{% endif %}
+		  {% endfor %}
+		</div>
+	</div>
+
+{% endblock %}

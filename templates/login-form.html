@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row">
+  <div class="col-xs-12">
+    <h2 class="title">Login</h2>
+    <br>
+    <br>
+    <form method="post" class="center-text">
+      <label class="label-login">Username</label>
+      <br>
+      <input type="text" name="username" value="{{username}}">
+      <br>
+      <br>
+      <label class="label-login">Password</label>
+      <br>
+      <input type="password" name="password" value="">
+      <br>
+
+      <div class="error">
+        {{error}}
+      </div>
+
+      <br>
+      <input type="submit" class="submit-login">
+      <br>
+      <br>
+      <a href="/signup" class="new-user">New User?</a>
+      <br>
+      <br>
+      <a href="/" class="cancel-button">Cancel</a>
+    </form>
+  </div>
+</div>
+{% endblock %}
